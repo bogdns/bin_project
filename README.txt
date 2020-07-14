@@ -2,6 +2,7 @@ The project Bogdan, Ilgam, Nail are working on.
 Notes:
 Git
 <> - you shouldn't write it
+git clone <link> - download repository
 git add . - add all files to github(point can be replaced by some file(just write name of file))
 git commit -m "<text that characterizes the update>" - commit changes
 git push - publish(upload) changes
