@@ -12,3 +12,4 @@ git tag "<tag>" - add tag
 git branch <name of a branch> - create branch
 git merge <name of a branch> - combine a branch with main branch
 git reset --hard HEAD~1 - cancel last commit
+1
