@@ -1,35 +1,26 @@
 import pygame
+from random import randrange
 
-pygame.init()
-window = pygame.display.set_mode((500, 500))
 
-pygame.display.set_caption("Snail the game")
+class Snake(object):
+    def __init__(self, pos, len):
+        pass
 
-x = 50
-y = 50
-width = 40
-height = 60
-speed = 5
 
-run = True
+class Food(object):
+    def __init__(self):
+        pass
 
-while run:
-    pygame.time.delay(100)
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            run = False
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_LEFT]:
-        x -= speed
-    if keys[pygame.K_RIGHT]:
-        x += speed
-    if keys[pygame.K_DOWN]:
-        y += speed
-    if keys[pygame.K_UP]:
-        y -= speed
-    window.fill((0,0,0))
-    pygame.draw.rect(window, (0, 0, 255), (x, y, width, height))
-    pygame.display.update()
+class Map(object):
+    def __init__(self):
+        pass
 
-pygame.quit()
+
+def main():
+    width = 500
+    height = 500
+    x, y = randrange(0, width), randrange(0, width)
+    length = 1
+    snake = Snake((x, y), length)
+    window = pygame.display.set_mode((width, height))
