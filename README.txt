@@ -12,4 +12,8 @@ git tag "<tag>" - add tag
 git branch <name of a branch> - create branch
 git merge <name of a branch> - combine a branch with main branch
 git reset --hard HEAD~1 - cancel last commit
+<<<<<<< HEAD
 1
+=======
+pilik s'el ribku
+>>>>>>> 5b972dc00be8e5c3d3a6f498c77505849df2f15b
