@@ -7,6 +7,7 @@ git add . - add all files to github(point can be replaced by some file(just writ
 git commit -m "<text that characterizes the update>" - commit changes
 git push - publish(upload) changes
 git pull - download changes
+git checkout <name of the branch> - switch to a branch
 git tag "<tag>" - add tag
 git branch <name of a branch> - create branch
 git merge <name of a branch> - combine a branch with main branch
