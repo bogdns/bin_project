@@ -20,7 +20,7 @@ def player(x, y):
 
 
 def run_game():
-    global playerY, playerX, speed
+    global playerY, playerX , speed
     while True:
         for event in pygame.event.get():  # проверка действий в pygame
             if event.type == pygame.QUIT:  # если нажата кнопка X (quit)
