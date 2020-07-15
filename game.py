@@ -21,4 +21,5 @@ while run:
             run = False
     pygame.draw.rect(window, (0, 0, 255), (x, y, width, height))
     pygame.display.update()
+
 pygame.quit()
