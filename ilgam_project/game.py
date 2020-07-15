@@ -1,31 +1,28 @@
 import pygame
-
+width = 600
+height = 600
 pygame.init()
-window = pygame.display.set_mode((1200, 1040))
+window = pygame.display.set_mode((600, 600))
 pygame.display.set_caption("Snail the game")
-
-x = 50
-y = 60
-width = 50
-height = 60
-speed = 5
-
 run = True
-
+rows = 20
+clock = pygame.time.Clock()
 while run:
-    pygame.time.delay(100)
+    pygame.time.delay(50)
+    lengBtwn = width // rows
+    window.fill((0,0,0))
+    x = 0
+    y = 0
+    for i in range(rows):
+        x += lengBtwn
+        y += lengBtwn
+        pygame.draw.line(window, (255,255,255), (x, 0), (x, width))
+        pygame.draw.line(window, (255, 255, 255), (0, y), (x, width))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_LEFT]:
-        x -= speed
-    if keys[pygame.K_RIGHT]:
-        x += speed
-
-
-    pygame.draw.rect(window, (0, 0, 255), (x, y, width, height))
+    clock.tick(10)
     pygame.display.update()
 
 pygame.quit()
