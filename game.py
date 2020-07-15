@@ -1,4 +1,4 @@
-import pygame
+шimport pygame
 
 pygame.init()
 window = pygame.display.set_mode((1200, 1040))
