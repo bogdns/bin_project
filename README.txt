@@ -11,4 +11,10 @@ git checkout <name of the branch> - switch to a branch
 git tag "<tag>" - add tag
 git branch <name of a branch> - create branch
 git merge <name of a branch> - combine a branch with main branch
+
+
+
+
+
+
 Богдану оскар
