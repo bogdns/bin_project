@@ -12,6 +12,3 @@ sdf
 sdf
 sd
 asdfsad ILGAMMEEEE OBAMEEEE
-asdfassfad
-ds
-ds
