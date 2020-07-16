@@ -14,4 +14,5 @@ class Food:
         # TO DO
 
         return self.pos
-
+    def update(self):
+        self.spawn(snake_position)
