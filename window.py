@@ -1,5 +1,6 @@
 from setting import *
 import pygame as pg
+from snake import *
 
 
 class Window:
@@ -29,4 +30,5 @@ class Window:
                 if event.type == pg.QUIT:
                     run = False
             self.create_matrix()
+
             pg.display.update()
