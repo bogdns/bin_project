@@ -17,7 +17,7 @@ class Snake:
         self.pos.append((size // 2, size // 2))  # places head of the snake in the centre
         # TO DO
 
-    def move(self):
+    def update(self):
         """
         moves snake
         """
