@@ -14,4 +14,3 @@ class Food:
         # TO DO
 
         return self.pos
-

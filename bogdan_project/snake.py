@@ -21,4 +21,3 @@ class Snake:
         """
         moves snake
         """
-
