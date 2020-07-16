@@ -1,24 +1,20 @@
 import pygame
 from random import randrange
+from snake import *
 
-width = 600
-height = 600
 pygame.init()
-window = pygame.display.set_mode((600, 600))
-pygame.display.set_caption("Snail the game")
-run = True
-rows = 20
+
 x_coord = 0
 y_coord = 0
-lengBtwn = width // rows
+
 x = 0
 y = 0
 food = 0
-dirn_x = 1
-dirn_y = 1
+directionX = 1
+directionY = 1
 length = 1
 while run:
-    pygame.time.delay(200)
+    pygame.time.delay(50)
     window.fill((0, 0, 0))
     if food == 0:
         x_coordf = (randrange(0, height) // lengBtwn) * lengBtwn
@@ -35,20 +31,20 @@ while run:
         pygame.draw.line(window, (255, 255, 255), (0, y), (width, y))
     key = pygame.key.get_pressed()
     if key[pygame.K_RIGHT]:
-        dirn_x = 1
-        dirn_y = 0
+        directionX = 1
+        directionY = 0
     if key[pygame.K_LEFT]:
-        dirn_x = -1
-        dirn_y = 0
+        directionX = -1
+        directionY = 0
     if key[pygame.K_UP]:
-        dirn_y = -1
-        dirn_x = 0
+        directionY = -1
+        directionX = 0
     if key[pygame.K_DOWN]:
-        dirn_y = 1
-        dirn_x = 0
+        directionY = 1
+        directionX = 0
 
-    x_coord = x_coord + dirn_x * lengBtwn
-    y_coord = y_coord + dirn_y * lengBtwn
+    x_coord = x_coord + directionX * lengBtwn
+    y_coord = y_coord + directionY * lengBtwn
 
     if x_coord == x_coordf and y_coord == y_coordf:
         length += 1
@@ -61,3 +57,16 @@ while run:
     pygame.display.update()
 
 pygame.quit()
+
+
+def main():
+    width = 600
+    height = 600
+    run = True  # flag, which show, what game is run / stop
+    numberOfLines = 20  # number of horizontal / vertical lines
+    distanceBetween = width // numberOfLines
+    window = pygame.display.set_mode((width, height))  # main window of game
+    pygame.display.set_caption("Snail the game")  # title game
+
+
+main()
