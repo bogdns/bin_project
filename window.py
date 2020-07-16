@@ -11,7 +11,14 @@ class Window:
         self.screen = pg.display.set_mode((setting.WIDTH, setting.HEIGHT))
 
     def create_matrix(self):
-        pass
+        x = 0
+        y = 0
+        for i in range(rows):
+            x += lengBtwn
+            y += lengBtwn
+            pygame.draw.line(window, (255, 255, 255), (x, 0), (x, height))
+            pygame.draw.line(window, (255, 255, 255), (0, y), (width, y))
+        
 
     def update(self):
         self.create_matrix()
