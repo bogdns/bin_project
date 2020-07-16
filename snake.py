@@ -5,10 +5,6 @@ import pygame as pg
 
 class Snake:
     def __init__(self, window):
-        """
-        direction: top - 1, down - 2, right - 3, left - 4
-        """
-        self.length = 1
         self.window = window
         self.directionX = 1
         self.directionY = 0
