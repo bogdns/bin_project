@@ -2,7 +2,7 @@ from collections import deque
 import pygame
 
 
-class Snake:
+class Znake:
     def __init__(self, distanceBetween, width, window):
         self.display = window
         self.x_coordS = 0  # X coordinates of snake
