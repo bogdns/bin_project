@@ -16,8 +16,8 @@ class Window:
         for i in range(rows):
             x += lengBtwn
             y += lengBtwn
-            pygame.draw.line(window, (255, 255, 255), (x, 0), (x, height))
-            pygame.draw.line(window, (255, 255, 255), (0, y), (width, y))
+            pygame.draw.line(window, (255, 255, 255), (x, 0), (x, HEIGHT))
+            pygame.draw.line(window, (255, 255, 255), (0, y), (WIDTH, y))
         
 
     def update(self):
