@@ -29,4 +29,4 @@ class Window:
             pygame.display.update()
 
     def draw_matrix(self):
-        
+
