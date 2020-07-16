@@ -29,7 +29,7 @@ class Window:
             pg.time.delay(50)
             self.window.fill((0, 0, 0))
             self.create_matrix()
-            self.snake.draw_snake()
+            self.snake.update()
             self.snake.update()
 
             for event in pg.event.get():

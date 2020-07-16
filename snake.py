@@ -20,12 +20,6 @@ class Snake:
     def draw_green_cell(self, cords):
         pg.draw.rect(self.window, (0, 255, 0), (*cords, self.distanceBetween, self.distanceBetween))
 
-    def draw_snake(self):
-        for cords in self.pos:
-            x = cords[0]
-            y = cords[1]
-            self.draw_green_cell((x * self.distanceBetween, y * self.distanceBetween))
-
     def update(self):
         key = pg.key.get_pressed()
         if key[pg.K_RIGHT]:
@@ -44,3 +38,9 @@ class Snake:
         self.pos.append((self.pos[-1][0] + self.directionX,
                          self.pos[-1][1] + self.directionY))
         self.pos = self.pos[self.length:]
+
+        for cords in self.pos:
+            x = cords[0]
+            y = cords[1]
+            self.draw_green_cell((x * self.distanceBetween, y * self.distanceBetween))
+
