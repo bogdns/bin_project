@@ -1,4 +1,6 @@
 from snake import *
+import pygame as pg
+from death import *
 
 
 class Window:
@@ -9,6 +11,9 @@ class Window:
         self.window = pg.display.set_mode((WIDTH, HEIGHT))
         self.distanceBetween = WIDTH // ROWS
         self.snake = Snake(self.window)
+        self.clock = pg.time.Clock()
+        self.run = True
+        self.death = Death(self.snake.pos, self.window, self.run)
 
     def draw_matrix(self):
         matrixX = 0
@@ -20,15 +25,16 @@ class Window:
             pg.draw.line(self.window, (255, 255, 255), (0, matrixY), (WIDTH, matrixY))
 
     def update(self):
-        run = True
-        while run:
-            pg.time.delay(50)
-            self.window.fill((0, 0, 0))
+        while self.run:
+            self.clock.tick(20)
             self.draw_matrix()
             self.snake.update()
-
+            self.death.field_check()
+            if self.death.death is True:
+                self.run = False
             for event in pg.event.get():
                 if event.type == pg.QUIT:
-                    run = False
+                    self.run = False
 
             pg.display.update()
+            self.window.fill((0, 0, 0))
