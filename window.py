@@ -30,8 +30,7 @@ class Window:
             self.window.fill((0, 0, 0))
             self.create_matrix()
             self.snake.update()
-            self.snake.update()
-
+            
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     run = False

@@ -12,7 +12,7 @@ class Snake:
         self.window = window
         self.directionX = 1
         self.directionY = 0
-        self.pos = []  # positions of the snake(what cells is it on)
+        self.pos = deque()  # positions of the snake(what cells is it on)
         self.distanceBetween = WIDTH // ROWS
         self.pos.append((ROWS // 2, ROWS // 2))  # places head of the snake in the center
         self.pos.append((ROWS // 2 + 1, ROWS // 2 + 1))  # places body of the snake in the center
@@ -37,7 +37,7 @@ class Snake:
 
         self.pos.append((self.pos[-1][0] + self.directionX,
                          self.pos[-1][1] + self.directionY))
-        self.pos = self.pos[self.length:]
+        self.pos.popleft()
 
         for cords in self.pos:
             x = cords[0]
