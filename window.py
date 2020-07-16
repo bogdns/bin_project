@@ -27,7 +27,7 @@ class Window:
         run = True
         while run:
             pg.time.delay(50)
-            self.window.fill((0,0,0))
+            self.window.fill((0, 0, 0))
             self.create_matrix()
             self.snake.draw_snake()
             self.snake.update()
