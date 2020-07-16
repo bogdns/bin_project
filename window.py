@@ -12,7 +12,7 @@ class Window:
         self.window = pg.display.set_mode((WIDTH, HEIGHT))
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.distanceBetween = WIDTH // ROWS
-
+        self.snake = Snake(self.window)
     def create_matrix(self):
         x = 0
         y = 0
@@ -30,5 +30,5 @@ class Window:
                 if event.type == pg.QUIT:
                     run = False
             self.create_matrix()
-
+            self.snake.draw_snake()
             pg.display.update()
