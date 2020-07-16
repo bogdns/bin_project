@@ -11,13 +11,13 @@ class Snake:
 
     def spawn(self, size):
         """
-        spawns snake in the centre of the map
+        spawns snake in the center of the map
         size - size of the matrix. gets cortege with quantity of cells
         """
         self.pos.append((size // 2, size // 2))  # places head of the snake in the centre
         # TO DO
 
-    def move(self):
+    def update(self):
         """
         moves snake
         """
