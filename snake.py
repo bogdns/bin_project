@@ -5,13 +5,13 @@ import pygame as pg
 
 class Snake:
     def __init__(self, window):
+        self.pos = deque()  # positions of the snake(what cells is it on)
+        self.pos.append((ROWS // 2, ROWS // 2))  # places head of the snake in the center
+        self.pos.append((ROWS // 2 + 1, ROWS // 2 + 1))  # places body of the snake in the center
         self.window = window
         self.directionX = 1
         self.directionY = 0
-        self.pos = deque()  # positions of the snake(what cells is it on)
         self.distanceBetween = WIDTH // ROWS
-        self.pos.append((ROWS // 2, ROWS // 2))  # places head of the snake in the center
-        self.pos.append((ROWS // 2 + 1, ROWS // 2 + 1))  # places body of the snake in the center
 
     def draw_green_cell(self, cords):
         pg.draw.rect(self.window, (0, 255, 0), (*cords, self.distanceBetween, self.distanceBetween))

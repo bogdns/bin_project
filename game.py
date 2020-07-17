@@ -3,4 +3,4 @@ import pygame as pg
 
 pg.init()
 screen = Window()
-screen.update()
+screen.update_display()
