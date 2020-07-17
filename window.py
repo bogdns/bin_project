@@ -14,6 +14,8 @@ class Window:
         self.clock = pg.time.Clock()
         self.run = True
         self.death = Death(self.snake.pos, self.window, self.run)
+        self.menu = True
+        self.font = pg.font.SysFont('arial', 32)
 
     def draw_matrix(self):
         matrixX = 0
@@ -26,6 +28,17 @@ class Window:
 
     def update(self):
         while self.run:
+            while self.menu:
+                self.clock.tick(20)
+                self.draw_menu()
+                for event in pg.event.get():
+                    if event.type == pg.QUIT:
+                        self.run = False
+                        exit()
+
+                pg.display.update()
+                self.window.fill((0, 150, 0))
+
             self.clock.tick(20)
             self.draw_matrix()
             self.snake.update()
@@ -35,6 +48,11 @@ class Window:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     self.run = False
+                    exit()
 
             pg.display.update()
             self.window.fill((0, 0, 0))
+
+    def draw_menu(self):
+        main_text = self.font.render("Snake game", 1, (0, 255, 0), (255, 255, 255))
+        self.window.blit(main_text, ((WIDTH -170) // 2, HEIGHT // 4))
