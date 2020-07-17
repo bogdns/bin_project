@@ -1,4 +1,6 @@
-from snake import *
+from bogdan_project.snake import *
+from bogdan_project.food import *
+import sys
 
 
 class Window:
@@ -9,15 +11,16 @@ class Window:
         self.window = pg.display.set_mode((WIDTH, HEIGHT))
         self.distanceBetween = WIDTH // ROWS
         self.snake = Snake(self.window)
+        self.food = Food(self.window)
 
     def draw_matrix(self):
-        matrixX = 0
-        matrixY = 0
+        matrix_x = 0
+        matrix_y = 0
         for i in range(ROWS):
-            matrixX += self.distanceBetween
-            matrixY += self.distanceBetween
-            pg.draw.line(self.window, (255, 255, 255), (matrixX, 0), (matrixY, HEIGHT))
-            pg.draw.line(self.window, (255, 255, 255), (0, matrixY), (WIDTH, matrixY))
+            matrix_x += self.distanceBetween
+            matrix_y += self.distanceBetween
+            pg.draw.line(self.window, (255, 255, 255), (matrix_x, 0), (matrix_y, HEIGHT))
+            pg.draw.line(self.window, (255, 255, 255), (0, matrix_y), (WIDTH, matrix_y))
 
     def update(self):
         run = True
@@ -25,10 +28,11 @@ class Window:
             pg.time.delay(50)
             self.window.fill((0, 0, 0))
             self.draw_matrix()
-            self.snake.update()
+            self.snake.update(self.food.ate)
+            self.food.update(self.snake.pos)
 
             for event in pg.event.get():
                 if event.type == pg.QUIT:
-                    run = False
+                    sys.exit(0)
 
             pg.display.update()
