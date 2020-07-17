@@ -15,7 +15,7 @@ class Snake:
         self.tail = self.pos[0]
 
     def draw_green_cell(self, cords):
-        pg.draw.rect(self.window, (0, 255, 0), (*cords,
+        pg.draw.rect(self.window, COLOR_SNAKE, (*cords,
                                                 self.distanceBetween,
                                                 self.distanceBetween))
 
@@ -24,13 +24,13 @@ class Snake:
         if key[pg.K_RIGHT] and self.direction_x != -1:
             self.direction_x = 1
             self.direction_y = 0
-        if key[pg.K_LEFT] and self.direction_x != 1:
+        elif key[pg.K_LEFT] and self.direction_x != 1:
             self.direction_x = -1
             self.direction_y = 0
-        if key[pg.K_UP] and self.direction_y != 1:
+        elif key[pg.K_UP] and self.direction_y != 1:
             self.direction_x = 0
             self.direction_y = -1
-        if key[pg.K_DOWN] and self.direction_y != -1:
+        elif key[pg.K_DOWN] and self.direction_y != -1:
             self.direction_x = 0
             self.direction_y = 1
         if ate:

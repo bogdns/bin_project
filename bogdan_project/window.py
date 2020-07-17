@@ -19,14 +19,14 @@ class Window:
         for i in range(ROWS):
             matrix_x += self.distanceBetween
             matrix_y += self.distanceBetween
-            pg.draw.line(self.window, (255, 255, 255), (matrix_x, 0), (matrix_y, HEIGHT))
-            pg.draw.line(self.window, (255, 255, 255), (0, matrix_y), (WIDTH, matrix_y))
+            pg.draw.line(self.window, COLOR_LINE, (matrix_x, 0), (matrix_y, HEIGHT))
+            pg.draw.line(self.window, COLOR_LINE, (0, matrix_y), (WIDTH, matrix_y))
 
     def update(self):
         run = True
         while run:
             pg.time.delay(100)
-            self.window.fill((0, 0, 0)),
+            self.window.fill(COLOR_GROUND)
             self.draw_matrix()
             self.snake.update(self.food.ate)
             self.food.update(self.snake.pos)
