@@ -1,5 +1,5 @@
-from bogdan_project.snake import *
-from bogdan_project.food import *
+from snake import *
+from food import *
 import sys
 
 

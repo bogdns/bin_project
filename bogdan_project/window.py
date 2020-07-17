@@ -25,7 +25,7 @@ class Window:
     def update(self):
         run = True
         while run:
-            pg.time.delay(50)
+            pg.time.delay(100)
             self.window.fill((0, 0, 0))
             self.draw_matrix()
             self.snake.update(self.food.ate)

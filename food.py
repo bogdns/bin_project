@@ -1,5 +1,5 @@
 from random import choice
-from bogdan_project.setting import *
+from setting import *
 import pygame as pg
 
 

@@ -1,4 +1,4 @@
-from bogdan_project.window import *
+from window import *
 import pygame as pg
 
 pg.init()

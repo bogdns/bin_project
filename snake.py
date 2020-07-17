@@ -1,5 +1,5 @@
 from collections import deque
-from bogdan_project.setting import *
+from setting import *
 import pygame as pg
 
 
