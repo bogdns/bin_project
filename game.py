@@ -2,5 +2,5 @@ from window import *
 import pygame as pg
 
 pg.init()
-screen = Window()
-screen.update_display()
+window = Window()
+window.update_display()

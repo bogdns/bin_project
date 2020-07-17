@@ -1,4 +1,4 @@
-from random import randrange
+from random import choice
 from setting import *
 import pygame as pg
 
@@ -8,26 +8,37 @@ class Food:
         self.pos = (0, 0)  # init pos of a food
         self.distanceBetween = WIDTH // ROWS
         self.screen = window
+        self.free_cells = set()  # cells which are free to place food
+        for i in range(ROWS):
+            for j in range(ROWS):
+                self.free_cells.add((i, j))
+        self.cords = self.calculate_pos([(ROWS // 2, ROWS // 2), (ROWS // 2, ROWS // 2 - 1)])
+        self.ate = 0
 
     def calculate_pos(self, snake_pos):
-        pass
         """
         calculates position of a food
         """
+        return choice(list(self.free_cells.difference(set(snake_pos))))  # return position. cortege
 
-        return cords  # return position. cortege
-
-    def draw_food(self, snake_pos):
+    def draw_food(self):
         """
         spawns like cells of the snake
         """
-        pg.draw.rect(self.screen, (0, 255, 0),
-                     (self.calculate_pos(snake_pos), self.distanceBetween, self.distanceBetween))
+        pg.draw.rect(self.screen, (255, 0, 0),
+                     (self.cords[0] * self.distanceBetween,
+                      self.cords[1] * self.distanceBetween,
+                      self.distanceBetween,
+                      self.distanceBetween))
 
     def update(self, snake_pos):
         """
         spawns food with library randint
         gets deque with positions of the snake and returns pos of the food
         """
-        self.draw_food(snake_pos)
+        self.ate = 0
+        if snake_pos[-1] == self.cords:  # поедание еды
+            self.cords = self.calculate_pos(snake_pos)
+            self.ate = 1
+        self.draw_food()
         # TODO

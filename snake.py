@@ -7,33 +7,37 @@ class Snake:
     def __init__(self, window):
         self.pos = deque()  # positions of the snake(what cells is it on)
         self.pos.append((ROWS // 2, ROWS // 2))  # places head of the snake in the center
-        self.pos.append((ROWS // 2 + 1, ROWS // 2 + 1))  # places body of the snake in the center
+        self.pos.append((ROWS // 2, ROWS // 2 - 1))  # places body of the snake in the center
         self.window = window
-        self.directionX = 1
-        self.directionY = 0
+        self.direction_x = 0
+        self.direction_y = -1
         self.distanceBetween = WIDTH // ROWS
+        self.tail = self.pos[0]
 
     def draw_green_cell(self, cords):
         pg.draw.rect(self.window, (0, 255, 0), (*cords, self.distanceBetween, self.distanceBetween))
 
-    def update(self):
+    def update(self, ate):
         key = pg.key.get_pressed()
-        if key[pg.K_RIGHT]:
-            self.directionX = 1
-            self.directionY = 0
-        if key[pg.K_LEFT]:
-            self.directionX = -1
-            self.directionY = 0
-        if key[pg.K_UP]:
-            self.directionY = -1
-            self.directionX = 0
-        if key[pg.K_DOWN]:
-            self.directionY = 1
-            self.directionX = 0
+        if key[pg.K_RIGHT] and self.direction_x != -1:
+            self.direction_x = 1
+            self.direction_y = 0
+        elif key[pg.K_LEFT] and self.direction_x != 1:
+            self.direction_x = -1
+            self.direction_y = 0
+        elif key[pg.K_UP] and self.direction_y != 1:
+            self.direction_y = -1
+            self.direction_x = 0
+        elif key[pg.K_DOWN] and self.direction_y != -1:
+            self.direction_y = 1
+            self.direction_x = 0
+        if ate:
+            self.pos.appendleft(self.tail)
 
-        self.pos.append((self.pos[-1][0] + self.directionX,
-                         self.pos[-1][1] + self.directionY))
-        self.pos.popleft()
+        self.pos.append((self.pos[-1][0] + self.direction_x,
+                         self.pos[-1][1] + self.direction_y))
+
+        self.tail = self.pos.popleft()
 
         for cords in self.pos:
             x = cords[0]
