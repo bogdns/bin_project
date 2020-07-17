@@ -25,7 +25,7 @@ class Food:
         """
         spawns like cells of the snake
         """
-        pg.draw.rect(self.screen, (255, 0, 0),
+        pg.draw.rect(self.screen, COLOR_FOOD,
                      (self.cords[0] * self.distanceBetween,
                       self.cords[1] * self.distanceBetween,
                       self.distanceBetween,

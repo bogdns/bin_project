@@ -19,7 +19,7 @@ class Snake:
         self.pos.append((ROWS // 2, ROWS // 2 - 1))  # places body of the snake in the center
 
     def draw_green_cell(self, cords):
-        pg.draw.rect(self.window, (0, 255, 0), (*cords, self.distanceBetween, self.distanceBetween))
+        pg.draw.rect(self.window, COLOR_GROUND, (*cords, self.distanceBetween, self.distanceBetween))
 
     def update(self, ate):
         key = pg.key.get_pressed()

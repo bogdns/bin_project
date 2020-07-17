@@ -30,8 +30,8 @@ class Window:
         for i in range(ROWS):
             matrix_x += self.distanceBetween
             matrix_y += self.distanceBetween
-            pg.draw.line(self.window, (255, 255, 255), (matrix_x, 0), (matrix_y, HEIGHT))
-            pg.draw.line(self.window, (255, 255, 255), (0, matrix_y), (WIDTH, matrix_y))
+            pg.draw.line(self.window, COLOR_LINE, (matrix_x, 0), (matrix_y, HEIGHT))
+            pg.draw.line(self.window, COLOR_LINE, (0, matrix_y), (WIDTH, matrix_y))
 
     def main_menu(self):
         """
@@ -51,7 +51,7 @@ class Window:
         """
         while self.gameb:
             self.clock.tick(10)
-            self.window.fill((0, 0, 0))
+            self.window.fill(COLOR_GROUND)
             self.draw_matrix()
             self.snake.update(self.food.ate)
             self.food.update(self.snake.pos)
@@ -83,7 +83,7 @@ class Window:
         """
         method updating menu icons and text 
         """
-        self.window.fill((0, 150, 0))
+        self.window.fill(COLOR_MENU)
 
         main_text = self.font.render("Snake game", 1, (0, 255, 0), (255, 255, 255))
         play_text = self.font.render("Play", 1, (255, 0, 0))
