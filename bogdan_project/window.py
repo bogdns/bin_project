@@ -26,7 +26,7 @@ class Window:
         run = True
         while run:
             pg.time.delay(100)
-            self.window.fill((0, 0, 0))
+            self.window.fill((0, 0, 0)),
             self.draw_matrix()
             self.snake.update(self.food.ate)
             self.food.update(self.snake.pos)
