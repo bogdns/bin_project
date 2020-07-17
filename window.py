@@ -15,9 +15,9 @@ class Window:
         self.snake = Snake(self.window)
         self.clock = pg.time.Clock()
         self.menu = True  # for menu: false - not working menu; true - working menu
-        self.gameb = False  # for game: false - not working game; true - working game
+        self.in_game = False  # for game: false - not working game; true - working game
         self.death = False  # for snake: false - not death; true - snake death
-        self.font = pg.font.SysFont('ubuntu', 42)  # fonts
+        self.font = pg.font.SysFont(*FONT_MENU)  # fonts
         self.Death = Death(self.snake.pos, self.window, self.death)
         self.food = Food(self.window)
 
@@ -49,7 +49,7 @@ class Window:
         """
         launch game method
         """
-        while self.gameb:
+        while self.in_game:
             self.clock.tick(10)
             self.window.fill(COLOR_GROUND)
             self.draw_matrix()
@@ -58,7 +58,7 @@ class Window:
             self.death = self.Death.field_check()  # checking snake death
             if self.death:
                 self.menu = True  # menu open
-                self.gameb = False  # game close
+                self.in_game = False  # game close
                 self.snake.spawn()
                 self.food.calculate_pos(self.snake.pos)
                 self.food.update(self.snake.pos)
@@ -79,26 +79,25 @@ class Window:
             self.game()
 
     def menu_update(self):
-        configs_menu = (self.window, (0, 90, 0), ((WIDTH - 100) // 2, (HEIGHT - 50) // 2, 100, 50))
+        configs_menu = (self.window, COLOR_UNPRESSED_MENU, ((WIDTH - 100) // 2, (HEIGHT - 50) // 2, 100, 50))
         """
         method updating menu icons and text 
         """
         self.window.fill(COLOR_MENU)
 
-        main_text = self.font.render("Snake game", 1, (0, 255, 0), (255, 255, 255))
-        play_text = self.font.render("Play", 1, (255, 0, 0))
+        main_text = self.font.render("Snake game", 1, COLOR_SNAKE_GAME)
+        play_text = self.font.render("Play", 1, COLOR_PLAY)
 
         mouse = pg.mouse.get_pos()  # using cordinates of mouse of player
         click = pg.mouse.get_pressed()  # using click check of mouse of player
 
         if ((WIDTH - 100) // 2 <= mouse[0] <= ((WIDTH - 100) // 2 + 100)) and ((HEIGHT - 50) // 2 <=
                                                                                mouse[1] <= ((HEIGHT - 50) // 2 + 50)):
-            # pg.draw.rect(self.window, (0, 255, 0), ((WIDTH - 100) // 2, (HEIGHT - 50) // 2, 100, 50))
-            configs_menu = (self.window, (0, 255, 0), ((WIDTH - 100) // 2, (HEIGHT - 50) // 2, 100, 50))
+            configs_menu = (self.window, COLOR_PRESSED_MENU, ((WIDTH - 100) // 2, (HEIGHT - 50) // 2, 100, 50))
             if click[0] == 1:
                 self.menu = False  # menu close
                 self.death = False  # death snake is turning off
-                self.gameb = True  # open the game
+                self.in_game = True  # open the game
 
         pg.draw.rect(*configs_menu)
         self.window.blit(main_text, ((WIDTH - 170) // 2, HEIGHT // 4))
