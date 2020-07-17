@@ -6,16 +6,20 @@ import pygame as pg
 class Snake:
     def __init__(self, window):
         self.pos = deque()  # positions of the snake(what cells is it on)
-        self.pos.append((ROWS // 2, ROWS // 2))  # places head of the snake in the center
-        self.pos.append((ROWS // 2, ROWS // 2 - 1))  # places body of the snake in the center
+        self.spawn()
         self.window = window
         self.direction_x = 0
         self.direction_y = -1
         self.distanceBetween = WIDTH // ROWS
         self.tail = self.pos[0]
 
+    def spawn(self):
+        self.pos.clear()
+        self.pos.append((ROWS // 2, ROWS // 2))  # places head of the snake in the center
+        self.pos.append((ROWS // 2, ROWS // 2 - 1))  # places body of the snake in the center
+
     def draw_green_cell(self, cords):
-        pg.draw.rect(self.window, (0, 255, 0), (*cords, self.distanceBetween, self.distanceBetween))
+        pg.draw.rect(self.window, COLOR_SNAKE, (*cords, self.distanceBetween, self.distanceBetween))
 
     def update(self, ate):
         key = pg.key.get_pressed()

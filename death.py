@@ -1,6 +1,7 @@
 from setting import *
 import pygame as pg
 
+
 class Death:
     def __init__(self, pos, window, death):
         self.pos = pos
