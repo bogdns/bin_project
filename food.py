@@ -14,7 +14,7 @@ class Food:
                 self.free_cells.add((i, j))
         self.calculate_pos([(ROWS // 2, ROWS // 2), (ROWS // 2, ROWS // 2 - 1)])
         self.ate = 0
-        self.points = 0
+        self.score = 0
 
     def calculate_pos(self, snake_pos):
         """
@@ -41,6 +41,6 @@ class Food:
         if snake_pos[-1] == self.cords:  # поедание еды
             self.calculate_pos(snake_pos)
             self.ate = 1
-            self.points += 1
+            self.score += 1
         self.draw_food()
         # TODO

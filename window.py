@@ -57,6 +57,7 @@ class Window:
             self.food.update(self.snake.pos)
             self.death = self.Death.field_check()  # checking snake death
             if self.death:
+                self.Death.display_death(self.food.score)
                 key = pg.key.get_pressed()
                 if key[pg.K_SPACE]:
                     self.menu = True  # menu open
@@ -103,4 +104,4 @@ class Window:
 
         pg.draw.rect(*configs_menu)
         self.window.blit(main_text, ((WIDTH - 170) // 2, HEIGHT // 4))
-        self.window.blit(play_text, ((WIDTH - 65) // 2, (HEIGHT - 30) // 2))
+        self.window.blit(play_text, ((WIDTH - 100) // 2, (HEIGHT - 50) // 2))

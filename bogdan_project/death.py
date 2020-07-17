@@ -1,6 +1,5 @@
-from setting import *
+from bogdan_project.setting import *
 import pygame as pg
-from food import *
 
 
 class Death:
@@ -14,12 +13,8 @@ class Death:
         head_x = self.pos[-1][0]
         head_y = self.pos[-1][1]
         if head_x > ROWS or head_x < 0 or head_y > ROWS or head_y < 0:
+            self.window.fill(COLOR_GAME_OVER_BACK)
+            death_text = self.font.render("Game over", 1, COLOR_GAME_OVER)
+            self.window.blit(death_text, (50, 50))
             self.death = True
             return self.death
-
-    def display_death(self, score):
-        self.window.fill(COLOR_GAME_OVER_BACK)
-        result_text = self.font.render(f"Your score {score}", 1, COLOR_GAME_OVER)
-        self.window.blit(result_text, (50, 100))
-        death_text = self.font.render("Game over", 1, COLOR_GAME_OVER)
-        self.window.blit(death_text, (50, 50))
