@@ -8,6 +8,7 @@ class Food:
         self.pos = (0, 0)  # init pos of a food
         self.distanceBetween = WIDTH // ROWS
         self.screen = window
+        self.points = 0
         self.free_cells = set()  # cells which are free to place food
         for i in range(ROWS):
             for j in range(ROWS):
@@ -40,5 +41,6 @@ class Food:
         if snake_pos[-1] == self.cords:  # поедание еды
             self.calculate_pos(snake_pos)
             self.ate = 1
+            self.points += 1
         self.draw_food()
         # TODO
