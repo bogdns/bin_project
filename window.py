@@ -57,11 +57,13 @@ class Window:
             self.food.update(self.snake.pos)
             self.death = self.Death.field_check()  # checking snake death
             if self.death:
-                self.menu = True  # menu open
-                self.in_game = False  # game close
-                self.snake.spawn()
-                self.food.calculate_pos(self.snake.pos)
-                self.food.update(self.snake.pos)
+                key = pg.key.get_pressed()
+                if key[pg.K_SPACE]:
+                    self.menu = True  # menu open
+                    self.in_game = False  # game close
+                    self.snake.spawn()
+                    self.food.calculate_pos(self.snake.pos)
+                    self.food.update(self.snake.pos)
 
             for event in pg.event.get():
                 if event.type == pg.QUIT:
@@ -101,4 +103,4 @@ class Window:
 
         pg.draw.rect(*configs_menu)
         self.window.blit(main_text, ((WIDTH - 170) // 2, HEIGHT // 4))
-        self.window.blit(play_text, ((WIDTH - 100) // 2, (HEIGHT - 50) // 2))
+        self.window.blit(play_text, ((WIDTH - 65) // 2, (HEIGHT - 30) // 2))
