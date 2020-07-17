@@ -12,18 +12,14 @@ class Food:
         for i in range(ROWS):
             for j in range(ROWS):
                 self.free_cells.add((i, j))
-        self.free_cells.remove((ROWS // 2, ROWS // 2))
-        self.free_cells.remove((ROWS // 2, ROWS // 2 - 1))
-        self.cords = self.calculate_pos(self.free_cells)
-        self.free_cells.add((ROWS // 2, ROWS // 2))
-        self.free_cells.add((ROWS // 2, ROWS // 2 - 1))
+        self.cords = self.calculate_pos([(ROWS // 2, ROWS // 2), (ROWS // 2, ROWS // 2 - 1)])
         self.ate = 0
 
     def calculate_pos(self, snake_pos):
         """
         calculates position of a food
         """
-        return choice(list(self.free_cells & set(snake_pos)))  # return position. cortege
+        return choice(list(self.free_cells.difference(set(snake_pos))))  # return position. cortege
 
     def draw_food(self):
         """
