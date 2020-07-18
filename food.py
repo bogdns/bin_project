@@ -20,7 +20,10 @@ class Food:
         """
         calculates position of a food
         """
-        self.cords = choice(list(self.free_cells.difference(set(snake_pos))))  # return position. cortege
+        if len(snake_pos) == ROWS ** 2:
+            self.cords = (-2, -2)
+        else:
+            self.cords = choice(list(self.free_cells.difference(set(snake_pos))))  # return position. cortege
 
     def draw_food(self):
         """
@@ -43,4 +46,3 @@ class Food:
             self.ate = 1
             self.score += 1
         self.draw_food()
-        # TODO

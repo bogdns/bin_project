@@ -7,39 +7,58 @@ class Menu:
         self.screen = window
 
         self.game = Game(self.screen)
-        self.settings = Settings()
+        self.settings = Settings(self.screen)
 
         self.font = pg.font.SysFont(*FONT_MENU)
         self.main_text = self.font.render("Snake game", 1, COLOR_SNAKE_GAME)
         self.play_text = self.font.render("Play", 1, COLOR_PLAY)
-        self.configs_menu = (self.screen, COLOR_UNPRESSED_MENU, ((WIDTH - 100) // 2, (HEIGHT - 50) // 2, 100, 50))
+        self.configs_menu = (self.screen, COLOR_UNPRESSED_MENU,
+                             ((WIDTH - WIDTH4) // 2, (HEIGHT - HEIGHT8) // 2, WIDTH4, HEIGHT8))
 
     def draw_buttons(self, configs_menu):
+        """
+        shows buttons on the menu screen
+        """
         pg.draw.rect(*configs_menu)
-        self.screen.blit(self.main_text, ((WIDTH - 170) // 2, HEIGHT // 4))
-        self.screen.blit(self.play_text, ((WIDTH - 100) // 2, (HEIGHT - 50) // 2))
+        self.screen.blit(self.main_text, ((WIDTH - WIDTH // 2.35) // 2, HEIGHT4))
+        self.screen.blit(self.play_text, ((WIDTH - WIDTH4) // 2, (HEIGHT - HEIGHT8) // 2))
 
-    def check_m_on_play(self, mouse, click):
-        if ((WIDTH - 100) // 2 <= mouse[0] <= ((WIDTH - 100) // 2 + 100)) and ((HEIGHT - 50) // 2 <=
-                                                                               mouse[1] <= ((HEIGHT - 50) // 2 + 50)):
-            self.configs_menu = (self.screen, COLOR_PRESSED_MENU, ((WIDTH - 100) // 2, (HEIGHT - 50) // 2, 100, 50))
+    def check_m_on_play(self, mouse, click, key):
+        """
+        checks if mouse on the play button
+        """
+
+        if ((WIDTH - WIDTH4) // 2 <= mouse[0] <= ((WIDTH - WIDTH4) // 2 + WIDTH4)) \
+                and ((HEIGHT - HEIGHT8) // 2 <= mouse[1] <= ((HEIGHT - HEIGHT8) // 2 + HEIGHT8)):
+            self.configs_menu = (self.screen, COLOR_PRESSED_MENU,
+                                 ((WIDTH - WIDTH4) // 2, (HEIGHT - HEIGHT8) // 2, WIDTH4, HEIGHT8))
             if click[0] == 1:
                 self.game.start_game()
+        elif key[pg.K_SPACE]:
+            self.game.start_game()
 
-    def check_m_on_settings(self, mouse, click):
-        pass
+    def check_m_on_settings(self, key):
+        """
+        checks if mouse on the settings button
+        """
+        # if key[pg.K_k]:
+        #     self.settings.display_settings()
 
     def update(self):
         """
         method updating menu icons and text 
         """
-        self.configs_menu = (self.screen, COLOR_UNPRESSED_MENU, ((WIDTH - 100) // 2, (HEIGHT - 50) // 2, 100, 50))
+        self.configs_menu = (
+        self.screen, COLOR_UNPRESSED_MENU, ((WIDTH - WIDTH4) // 2, (HEIGHT - HEIGHT8) // 2, WIDTH4, HEIGHT8))
         self.screen.fill(COLOR_MENU)
 
-        mouse = pg.mouse.get_pos()  # using cordinates of mouse of player
+        key = pg.key.get_pressed()
+        mouse = pg.mouse.get_pos()  # using coordinates of mouse of player
         click = pg.mouse.get_pressed()  # using click check of mouse of player
 
-        self.check_m_on_play(mouse, click)
-        self.check_m_on_settings(mouse, click)
+        self.check_m_on_play(mouse, click, key)
+        # self.check_m_on_settings(key)
 
         self.draw_buttons(self.configs_menu)
+
+        quit()

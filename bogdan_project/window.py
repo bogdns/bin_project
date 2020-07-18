@@ -78,6 +78,7 @@ class Window:
         while True:
             self.main_menu()
             self.game()
+
     def menu_update(self):
         configs_menu = (self.window, COLOR_UNPRESSED_MENU, ((WIDTH - 100) // 2, (HEIGHT - 50) // 2, 100, 50))
         """

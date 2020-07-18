@@ -10,6 +10,9 @@ class Window:
         self.menu = Menu(self.window)
 
     def update(self):
+        """
+        opens menu
+        """
         while True:
             CLOCK.tick(24)
             self.menu.update()
