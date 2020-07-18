@@ -49,6 +49,7 @@ class Window:
         """
         launch game method
         """
+
         while self.in_game:
             self.clock.tick(FPS)
             self.window.fill(COLOR_GROUND)
@@ -77,7 +78,6 @@ class Window:
         while True:
             self.main_menu()
             self.game()
-
     def menu_update(self):
         configs_menu = (self.window, COLOR_UNPRESSED_MENU, ((WIDTH - 100) // 2, (HEIGHT - 50) // 2, 100, 50))
         """
