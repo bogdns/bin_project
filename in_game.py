@@ -35,9 +35,10 @@ class Game:
         self.victory_sounds = pg.mixer.Sound(self.config[0])
         self.victory_sounds.set_volume(self.config[1])
         self.victory_sounds.play()
-        self.victory_photo = pg.transform.scale(
-            pg.image.load(choice(VICTORY_PHOTOS)).convert(),
-            (WIDTH, HEIGHT))
+        if ROFL_MODE:
+            self.victory_photo = pg.transform.scale(
+                pg.image.load(choice(VICTORY_PHOTOS)).convert(),
+                (WIDTH, HEIGHT))
 
         for i in range(ROWS ** 2):
             CLOCK.tick(ROWS ** 2 // 5)
@@ -51,7 +52,11 @@ class Game:
         while True:
             CLOCK.tick(10)
 
-            self.screen.blit(self.victory_photo, (0, 0))
+            if ROFL_MODE:
+                self.screen.blit(self.victory_photo, (0, 0))
+            else:
+                self.screen.fill(COLOR_GROUND)
+                self.screen.blit(self.result_text, (WIDTH // 20, WIDTH // 4))
 
             key = pg.key.get_pressed()
 

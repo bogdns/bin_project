@@ -25,7 +25,7 @@ COLOR_VICTORY = (255, 255, 0)
 TEXT_SIZE = HEIGHT // 15
 FONT_DEATH = ('comicsansms', TEXT_SIZE)
 FONT_MENU = ('ubuntu', TEXT_SIZE)
-FONT_VICTORY = ('ubuntu', TEXT_SIZE)
+FONT_VICTORY = ('ubuntu', HEIGHT//8)
 FONT_SETTINGS = ('ubuntu', TEXT_SIZE)
 DIST_BETWEEN = WIDTH // ROWS
 
@@ -33,14 +33,12 @@ ROFL_MODE = True
 
 if ROFL_MODE:
     DEFEAT_SOUNDS = (("sounds/defeat_rofl_1.ogg", 0.4), ("sounds/defeat_rofl_2.ogg", 0.3))
-    VICTORY_SOUNDS = (("sounds/victory_1.ogg", 0.4))
+    VICTORY_SOUNDS = (("sounds/victory_rofl_1.ogg", 0.4),0)
     DEFEAT_PHOTOS = ("photos/defeat_rofl_1.jpg", "photos/defeat_rofl_2.jpg", "photos/defeat_rofl_3.jpg")
     VICTORY_PHOTOS = ("photos/victory_rofl_1.jpg", "photos/victory_rofl_2.jpg", "photos/victory_rofl_3.jpg")
 else:
     DEFEAT_SOUNDS = (("sounds/defeat_1.ogg", 0.5), ("sounds/defeat_2.ogg", 0.3))
-    VICTORY_SOUNDS = ()
-    DEFEAT_PHOTOS = ()
-    VICTORY_PHOTOS = ()
+    VICTORY_SOUNDS = (("sounds/victory_1.ogg", 0.4), ("sounds/victory_2.ogg", 0.1))
 
 FOOD_SOUND = pg.mixer.Sound('sounds/eat_food.ogg')
 FOOD_SOUND.set_volume(1)

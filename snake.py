@@ -18,6 +18,8 @@ class Snake:
         self.direction_y = -1
         self.pos.clear()
         self.pos.append((ROWS // 2, ROWS // 2))  # places head of the snake in the center
+        for i in range(ROWS ** 2 - 2):
+            self.pos.append((ROWS//2, ROWS//2))
 
     def draw_green_cell(self, cords):
         pg.draw.rect(self.window, COLOR_SNAKE, (*cords, self.distanceBetween, self.distanceBetween))
