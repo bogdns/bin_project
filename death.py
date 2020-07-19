@@ -20,6 +20,12 @@ class Death:
         return False
 
     def display_death(self, score):
+        self.config = choice(DEFEAT_SOUNDS)
+        self.defeat_sounds = pg.mixer.Sound(self.config[0])
+        self.defeat_sounds.set_volume(self.config[1])
+        self.defeat_sounds.play()
+
+        time.sleep(0.3)
         while True:
             CLOCK.tick(24)
             self.death_elements(score)

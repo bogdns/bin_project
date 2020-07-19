@@ -31,6 +31,10 @@ class Game:
         """
         open victory screen
         """
+        self.config = choice(VICTORY_SOUNDS)
+        self.defeat_sounds = pg.mixer.Sound(self.config[0])
+        self.defeat_sounds.set_volume(self.config[1])
+        self.defeat_sounds.play()
         for i in range(ROWS ** 2):
             CLOCK.tick(ROWS ** 2 // 5)
             self.snake.pos.popleft()

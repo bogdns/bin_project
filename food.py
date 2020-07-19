@@ -16,6 +16,7 @@ class Food:
         self.ate = 0
         self.score = 0
 
+
     def calculate_pos(self, snake_pos):
         """
         calculates position of a food
@@ -42,6 +43,7 @@ class Food:
         """
         self.ate = 0
         if snake_pos[-1] == self.cords:  # поедание еды
+            FOOD_SOUND.play()
             self.calculate_pos(snake_pos)
             self.ate = 1
             self.score += 1
