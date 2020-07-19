@@ -1,18 +1,16 @@
 import pygame as pg
+from random import choice
+from quit_game import quit
 
 pg.init()
-
 from setting import *
 
+window = pg.display.set_mode((400, 400))
+
 while True:
-    a = int(input())
-    if a == 1:
-        FOOD_SOUND.play()
-    elif a == 2:
-        DEFEAT_SOUND_1.play()
-    elif a == 3:
-        DEFEAT_SOUND_ROFL_1.play()
-    elif a == 4:
-        DEFEAT_SOUND_ROFL_2.play()
-    elif a == 5:
-        VICTORY_SOUND_ROFL_1.play()
+    CLOCK.tick(24)
+    victory_photo = pg.image.load(choice(VICTORY_PHOTOS)).convert()
+    victory_photo = pg.transform.scale(victory_photo, (400, 400))
+    window.blit(victory_photo, (0, 0))
+    quit()
+    pg.display.update()

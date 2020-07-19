@@ -16,7 +16,6 @@ class Food:
         self.ate = 0
         self.score = 0
 
-
     def calculate_pos(self, snake_pos):
         """
         calculates position of a food

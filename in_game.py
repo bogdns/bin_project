@@ -32,9 +32,13 @@ class Game:
         open victory screen
         """
         self.config = choice(VICTORY_SOUNDS)
-        self.defeat_sounds = pg.mixer.Sound(self.config[0])
-        self.defeat_sounds.set_volume(self.config[1])
-        self.defeat_sounds.play()
+        self.victory_sounds = pg.mixer.Sound(self.config[0])
+        self.victory_sounds.set_volume(self.config[1])
+        self.victory_sounds.play()
+        self.victory_photo = pg.transform.scale(
+            pg.image.load(choice(VICTORY_PHOTOS)).convert(),
+            (WIDTH, HEIGHT))
+
         for i in range(ROWS ** 2):
             CLOCK.tick(ROWS ** 2 // 5)
             self.snake.pos.popleft()
@@ -46,8 +50,8 @@ class Game:
 
         while True:
             CLOCK.tick(10)
-            self.screen.fill(COLOR_GROUND)
-            self.screen.blit(self.result_text, (WIDTH // 8, HEIGHT // 4))
+
+            self.screen.blit(self.victory_photo, (0, 0))
 
             key = pg.key.get_pressed()
 
