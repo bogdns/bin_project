@@ -16,8 +16,8 @@ class Death:
         self.screen.blit(death_text, (WIDTH // 20, WIDTH // 4))
 
     def death_check(self, pos):
-        # if not (0 <= pos[-1][0] < ROWS and 0 <= pos[-1][1] < ROWS) or pos.count(pos[-1]) > 1:
-        #     return True
+        if not (0 <= pos[-1][0] < ROWS and 0 <= pos[-1][1] < ROWS) or pos.count(pos[-1]) > 1:
+            return True
         return False
 
     def display_death(self, score):
