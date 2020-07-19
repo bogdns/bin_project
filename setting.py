@@ -2,7 +2,7 @@
 import pygame as pg
 from quit_game import quit
 
-RESOLUTION = (WIDTH, HEIGHT) = (400, 400)  # resolution
+RESOLUTION = (WIDTH, HEIGHT) = (700, 700)  # resolution
 ROWS = 20  # number of horizontal / vertical lines
 FPS = 10
 

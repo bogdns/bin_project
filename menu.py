@@ -34,7 +34,7 @@ class Menu:
         if ((WIDTH - WIDTH4) // 2 <= mouse[0] <= ((WIDTH - WIDTH4) // 2 + WIDTH4)) \
                 and ((HEIGHT - HEIGHT8) // 2 <= mouse[1] <= ((HEIGHT - HEIGHT8) // 2 + HEIGHT8)):
             pg.draw.rect(self.screen, COLOR_PRESSED_MENU,
-                                 ((WIDTH - WIDTH4) // 2, (HEIGHT - HEIGHT8) // 2, WIDTH4, HEIGHT8))
+                         ((WIDTH - WIDTH4) // 2, (HEIGHT - HEIGHT8) // 2, WIDTH4, HEIGHT8))
             if click[0] == 1:
                 self.game.start_game()
         elif key[pg.K_SPACE]:
@@ -50,7 +50,7 @@ class Menu:
         if ((WIDTH - WIDTH4) // 2 <= mouse[0] <= ((WIDTH - WIDTH4) // 2 + WIDTH4)) \
                 and ((HEIGHT + 100) // 2 <= mouse[1] <= ((HEIGHT + 100) // 2 + 100)):
             pg.draw.rect(self.screen, COLOR_PRESSED_MENU,
-                                 ((WIDTH - WIDTH4) // 2, (HEIGHT + 100) // 2, WIDTH4, HEIGHT8))
+                         ((WIDTH - WIDTH4) // 2, (HEIGHT + 100) // 2, WIDTH4, HEIGHT8))
             if click[0] == 1:
                 self.settings.display_settings()
         elif key[pg.K_k]:
