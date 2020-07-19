@@ -7,7 +7,7 @@ class Window:
         icon = pg.image.load("snake.png")
         pg.display.set_icon(icon)
         self.window = pg.display.set_mode((WIDTH, HEIGHT))
-        self.menu = Menu(self.window)
+        self.in_menu = Menu(self.window)
 
     def update(self):
         """
@@ -15,7 +15,7 @@ class Window:
         """
         while True:
             CLOCK.tick(24)
-            self.menu.update()
+            self.in_menu.update()
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     exit(0)
